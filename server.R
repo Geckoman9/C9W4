@@ -8,7 +8,6 @@
 #
 
 library(shiny)
-library(png)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -26,39 +25,39 @@ shinyServer(function(input, output) {
                                 "Queen Side Castle" = 3, "Promotion" = 4))
   )})
     
-  output$move <- renderImage({
+  
+  output$move = renderImage({
     if(input$Norm_Spec == "Normal" && input$pieces == 1){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "King_moves.png"))
+      return(list(src = "www/King_moves.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Normal" && input$pieces == 2){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "Queen_moves.png"))
+      return(list(src = "www/Queen_moves.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Normal" && input$pieces == 3){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "Rook_moves.png"))
+      return(list(src = "www/Rook_moves.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Normal" && input$pieces == 4){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "Knight_moves.png"))
+      return(list(src = "www/Knight_moves.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Normal" && input$pieces == 5){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "Bishop_moves.png"))
+      return(list(src = "www/Bishop_moves.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Normal" && input$pieces == 6){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "Pawn_moves.png"))
+      return(list(src = "www/Pawn_moves.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Special" && input$special == 1){
-        filename <- normalizePath(file.path("~/ChessDisplay/www", "Enpassant.png"))
+      return(list(src = "www/Enpassant.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Special" &&  input$special == 2){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "King_castle.png"))
+      return(list(src = "www/King_castle.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Special" &&  input$special == 3){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "Queen_castle.png"))
+      return(list(src = "www/Queen_castle.png",contentType = "image/png"))
     }
     else if(input$Norm_Spec == "Special" &&   input$special == 4){
-      filename <- normalizePath(file.path("~/ChessDisplay/www", "Promotion.png"))
+      return(list(src = "www/Promotion.png",contentType = "image/png"))
     }
-    list(src = filename)
-  }, deleteFile = FALSE)
+  }, deleteFile = F)
   
   output$info <- renderText({
     if(input$Norm_Spec == "Normal" && input$pieces == 1){

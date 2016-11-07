@@ -25,7 +25,6 @@ shinyUI(fluidPage(
     mainPanel(
        textOutput("info"),
        imageOutput("move")
-       
     )
   )
 ))
